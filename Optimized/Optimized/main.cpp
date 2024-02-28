@@ -1,21 +1,19 @@
 #include <iostream>
 #include <windows.h>
+#include "basic_stopwatch.h"
 
 using namespace std;
 
+basic_stopwatch<int> m_stopwatch{};
+
 void main()
 {	
-	/* [ Program or Thread -> Start ] */
-	// 프로세서의 우선순위 조작 (운영체제에 강제로 우선순위 높임)
-	SetPriorityClass(GetCurrentProcess(), ABOVE_NORMAL_PRIORITY_CLASS);
-	// Thread 우선순위 조작
-	SetPriorityClass(GetCurrentThread(), THREAD_PRIORITY_HIGHEST);
+	m_stopwatch.Start();
 
-	/* [ Program or Thread -> END ] */
-	// 프로세서의 우선순위 조작 (운영체제에 강제로 우선순위 되돌림)
-	SetPriorityClass(GetCurrentProcess(), NORMAL_PRIORITY_CLASS);
-	// Thread 우선순위 조작
-	SetPriorityClass(GetCurrentThread(), THREAD_PRIORITY_NORMAL);
+	bool nRet = m_stopwatch.IsStarted();
+	cout << nRet << endl;
+
+	m_stopwatch.Show();
 
 	system("pause");
 }
