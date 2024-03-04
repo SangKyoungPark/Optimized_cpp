@@ -1,19 +1,21 @@
 #include <iostream>
 #include <windows.h>
-#include "basic_stopwatch.h"
+#include "StopWatch.h"
 
 using namespace std;
 
-basic_stopwatch<int> m_stopwatch{};
+StopWatch timer;
 
 void main()
-{	
-	m_stopwatch.Start();
+{
+	timer.SetFuncName("main()");
+	timer.Start();
+	for (int i = 0; i < 100; i++);
+	timer.End();
 
-	bool nRet = m_stopwatch.IsStarted();
-	cout << nRet << endl;
-
-	m_stopwatch.Show();
+	cout << timer.GetNanoTime() << endl;
+	cout << timer.GetMicroTime() << endl;
+	cout << timer.GetMilliTime() << endl;
 
 	system("pause");
 }
