@@ -11,11 +11,10 @@ void main()
 	timer.SetFuncName("main()");
 	timer.Start();
 	for (int i = 0; i < 100; i++);
-	timer.End();
+	timer.End(E_TIME_TYPE::_NANO_);
 
-	cout << timer.GetNanoTime() << endl;
-	cout << timer.GetMicroTime() << endl;
-	cout << timer.GetMilliTime() << endl;
+	cout << "Func Name : " << timer.GetTimerRepo(0).first << endl;
+	cout << "Tact Time : " << timer.GetTimerRepo(0).second << "seconds" << endl;
 
 	system("pause");
 }
